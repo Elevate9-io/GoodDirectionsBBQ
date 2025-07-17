@@ -41,7 +41,7 @@ export default function Form() {
           left: 0,
           width: '100vw',
           height: '100vh',
-          backgroundImage: 'url("landingpageBBQ.jpg")',
+          backgroundImage: 'url("images/bbqGD.png")',
           backgroundSize: 'cover',
           backgroundPosition: 'center',
           zIndex: -1,
@@ -70,8 +70,10 @@ export default function Form() {
                     whiteSpace: 'pre-line'
                 }}
             >
-                {`Contact us to \n`}
-                {`build your future`}
+                {`Feels Like Home, Tastes like Texas`}
+            </Typography>
+            <Typography variant='h4' sx={{ color: 'white', textAlign: 'center', mb: 4 }}>
+              {`You bring the appetite, and we will bring the smoke`}
             </Typography>
         </Box>
 
@@ -98,12 +100,12 @@ export default function Form() {
             size="large"
             onClick={handleSubmit}
             sx={{
-                backgroundColor: '#747133',
+                backgroundColor: 'red',
                 color: 'white',
-                width: 220,
-                height: '75px',
-                borderRadius: '25px',
-                fontSize: '1.6rem'
+                width: 150,
+                height: '50px',
+                borderRadius: '50px',
+                fontSize: '1.2rem'
             }}
             >
             SEND
