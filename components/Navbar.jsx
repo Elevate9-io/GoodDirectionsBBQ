@@ -5,7 +5,7 @@ import MenuIcon from '@mui/icons-material/Menu';
 import Link from 'next/link';
 
 
-const pages = ['Home', 'About', 'Form', 'Contact'];
+const pages = ['Home', 'About', 'Menu', 'Services'];
 
 
 
@@ -18,16 +18,40 @@ const Navbar = () => {
 
   return (
     <AppBar position="fixed" color="transparent" elevation={0}>
-      <Toolbar sx={{ justifyContent: 'space-between', marginLeft: { md: '20%' }, marginRight: { md: '15%' }, px: { xs: 1, sm: 2 } }}>
-        <Box component="img" src="/images/logo.png" alt="R&M Logo" sx={{ height:50, margin: 2 }} />
+      <Toolbar
+        sx={{
+          justifyContent: 'space-between',
+          marginLeft: { md: '20%' },
+          marginRight: { md: '15%' },
+          marginTop: 2,
+          px: { xs: 1, sm: 2 }
+        }}
+      >
+        
         {/* Desktop Nav */}
         <Box sx={{ display: { xs: 'none', md: 'flex' }, justifyContent: 'space-between', width: '35%' }}>
           {pages.map((page) => (
             <Link key={page} href={`/${page.toLowerCase()}`} passHref>
-              <Button sx={{ fontSize: 19, color: '#747133', fontWeight: 'bold', textTransform: 'none' }}>{page}</Button>
+              <Button sx={{ fontSize: 17, color: '#747133', color: 'white' }}>{page}</Button>
             </Link>
           ))}
         </Box>
+
+        <Button
+          variant="outlined"
+          sx={{
+            color: 'white',
+            borderColor: 'white',
+            fontSize: 17,
+            borderRadius: '25px',
+            width: '15%',
+            height: '50px',
+            marginRight: '6%'
+          }}
+        >
+          Reservation
+        </Button>
+
         {/* Mobile Hamburger */}
         <IconButton
           color="inherit"
