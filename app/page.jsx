@@ -16,8 +16,8 @@ export default function Form() {
     const payload = {
       name: data.get("name"),
       email: data.get("email"),
-      message: data.get("phone"),
-      message: data.get("comment"),
+      phone: data.get("phone"),
+      comment: data.get("comment"),
     };
 
     const res = await fetch("/.netlify/functions/send-email", {
@@ -57,64 +57,85 @@ export default function Form() {
           },
         }}
       />
-      <Box sx={{ pt: 20, ml: '20%', mr: '20%', position: 'relative', zIndex: 2 }}>
-        <Box>
+
+      { status === 'success' ? (
+        <Typography variant='h2'
+          sx={{
+            fontWeight: 'bold',
+            color: 'white',
+            textAlign: 'center',
+            mt: 50,
+            mb: 4,
+            whiteSpace: 'pre-line'
+          }}
+        >
+          {`Thank you. \n We will taste the best BBQ in Texas`}
+        </Typography>
+      ) : (
+        <Box
+          component="form"
+          sx={{ pt: 20, ml: '20%', mr: '20%', position: 'relative', zIndex: 2 }}
+          onSubmit={handleSubmit}
+        >
+          <Box>
             <Typography
-                variant="h2"
-                sx={{
-                    fontWeight: 'bold',
-                    color: 'white',
-                    textAlign: 'center',
-                    mt: 19,
-                    mb: 4,
-                    whiteSpace: 'pre-line'
-                }}
+              variant="h2"
+              sx={{
+                  fontWeight: 'bold',
+                  color: 'white',
+                  textAlign: 'center',
+                  mt: 19,
+                  mb: 4,
+                  whiteSpace: 'pre-line'
+              }}
             >
-                {`Feels Like Home, Tastes like Texas`}
+              {`Feels Like Home, Tastes like Texas`}
             </Typography>
             <Typography variant='h4' sx={{ color: 'white', textAlign: 'center', mb: 4 }}>
               {`You bring the appetite, and we will bring the smoke`}
             </Typography>
-        </Box>
+          </Box>
 
-        <Box sx={{ width: '100%', pt: 7 }}>
+          <Box sx={{ width: '100%', pt: 7 }}>
             <Grid container spacing={2} alignItems='stretch'>
-                <Grid item size={{ xs:12, md: 4 }}>
-                    <FormField label="Full Name" name="name" />
-                </Grid>
-                <Grid item size={{ xs:12, md: 4 }}>
-                    <FormField label="Email Address" name="email" />
-                </Grid>
-                <Grid item size={{ xs:12, md: 4 }}>
-                    <FormField label="Phone Number" name="phone" />
-                </Grid>
-                <Grid item size={{ xs:12, md: 12 }}>
-                    <FormField label="Leave a comment" name="comment" />
-                </Grid>
+              <Grid item size={{ xs:12, md: 4 }}>
+                <FormField label="Full Name" name="name" />
+              </Grid>
+              <Grid item size={{ xs:12, md: 4 }}>
+                <FormField label="Email Address" name="email" />
+              </Grid>
+              <Grid item size={{ xs:12, md: 4 }}>
+                <FormField label="Phone Number" name="phone" />
+              </Grid>
+              <Grid item size={{ xs:12, md: 12 }}>
+                <FormField label="Leave a comment" name="comment" />
+              </Grid>
             </Grid>
-        </Box>
+          </Box>
 
-        <Box textAlign="center" mt={4}>
+          <Box textAlign="center" mt={4}>
             <Button
-            variant="contained"
-            size="large"
-            onClick={handleSubmit}
-            sx={{
-                backgroundColor: 'red',
-                color: 'white',
-                width: 150,
-                height: '50px',
-                borderRadius: '50px',
-                fontSize: '1.2rem'
-            }}
+              type="submit"
+              variant="contained"
+              size="large"
+              sx={{
+                  backgroundColor: 'red',
+                  color: 'white',
+                  width: 150,
+                  height: '50px',
+                  borderRadius: '50px',
+                  fontSize: '1.2rem'
+              }}
             >
-            SEND
+              SEND
             </Button>
 
-            {status === "success" && <Alert severity="success">Message sent!</Alert>}
-            {status === "error" && <Alert severity="error">Something went wrong.</Alert>}
+          </Box>
         </Box>
-      </Box>
+      )}
+
+      {status === "success" && (<Alert severity="success">Message sent!</Alert>)}
+      {status === "error" && <Alert severity="error">Something went wrong.</Alert>}
     </Box>
   );
 }
