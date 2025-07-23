@@ -8,7 +8,7 @@ exports.handler = async function (event) {
   const { name, email, phone, comment } = JSON.parse(event.body);
 
   const transporter = nodemailer.createTransport({
-    service: "gmail",
+    service: "smtp.office365.com",
     auth: {
       user: process.env.MAIL_USER,
       pass: process.env.MAIL_PASS,
