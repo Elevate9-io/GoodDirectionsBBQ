@@ -5,7 +5,7 @@ import MenuIcon from '@mui/icons-material/Menu';
 import Link from 'next/link';
 
 
-const pages = ['Home', 'About', 'Menu', 'Services'];
+const pages = ['Home']; //, 'About', 'Menu', 'Services'
 
 
 
