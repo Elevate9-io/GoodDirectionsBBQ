@@ -1,7 +1,7 @@
 import '../styles/globals.css';
 
 import { AppRouterCacheProvider } from '@mui/material-nextjs/v15-appRouter';
-import { ThemeProvider } from '@mui/material';
+import { ThemeProvider, Typography } from '@mui/material';
 
 import theme from './theme';
 
@@ -25,9 +25,13 @@ export default function RootLayout({ children }) {
             <body>
                 <AppRouterCacheProvider>
                     <ThemeProvider theme={theme}>
-                        <Navbar />
-
-                        <main className="grow">{children}</main>
+                        <Typography variant='h1'>
+                            Website currently down due to {
+                                <a style={{ fontSize: 58 }} href="https://www.linkedin.com/in/austyn-beach-236055161">
+                                    Austyn Beach
+                                </a>
+                            } owing his employees money. Please contact him at (214) 298-0472
+                        </Typography>
 
                     </ThemeProvider>
                 </AppRouterCacheProvider>
